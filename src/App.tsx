@@ -1,7 +1,11 @@
-const App = () => {
+import React from "react";
+import Header from "@/components/Header";
+
+const App: React.FunctionComponent = () => {
     return (
-        <div>
-            <h2 className="text-3xl underline">Hello world</h2>
+        <div className="flex flex-col">
+            {/* Main component related to doc formatting & editing */}
+            <Header />
         </div>
     );
 };

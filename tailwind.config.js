@@ -4,6 +4,9 @@ export default {
     theme: {
         extend: {
             fontFamily: "Roboto",
+            colors: {
+                iconColor: "#444746",
+            },
         },
     },
     plugins: [],
