@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import IconButtonWithDropdown from "@/components/Buttons/IconButtonWithDropdown";
+import IconButtonWithDropdown from "@/components/Buttons/IconButton";
 import PillIconButton from "@/components/Buttons/PillIconButton";
 import gdocsLogo from "@/assets/svg/Google_Docs_logo.svg";
 import FileNameInput from "@/components/Input/FileNameInput";
@@ -134,7 +134,7 @@ const RightSection: React.FunctionComponent = () => {
 // Secondary component containing document formatting options
 const DocumentFormattingSection: React.FunctionComponent = () => {
     return (
-        <div className="flex justify-between items-center py-2 px-6 text-white">
+        <div className="flex justify-between items-center py-2 px-6 text-white bg-white">
             <LeftSection />
             <RightSection />
         </div>

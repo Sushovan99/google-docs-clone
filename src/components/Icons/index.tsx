@@ -151,3 +151,21 @@ export const ArrowDropDown: React.FunctionComponent<Props> = ({
         </svg>
     );
 };
+
+export const KeyBoardArrowLeft: React.FunctionComponent<Props> = ({
+    fill,
+    height = "18",
+    width = "18",
+}) => {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height={height}
+            viewBox="0 96 960 960"
+            width={width}
+            fill={fill}
+        >
+            <path d="M561 816 320 575l241-241 43 43-198 198 198 198-43 43Z" />
+        </svg>
+    );
+};

@@ -5,6 +5,7 @@ interface Props {
     label: string;
     radius: string;
     padding?: string;
+    right?: string;
 }
 
 const IconButtonWithDropdown: React.FunctionComponent<Props> = ({
@@ -12,19 +13,27 @@ const IconButtonWithDropdown: React.FunctionComponent<Props> = ({
     radius,
     children,
     padding = "p-1",
+    right = "",
 }) => {
     const [showToolTip, setShowToolTip] = useState(false);
 
     return (
         <button
-            className={`relative flex items-center justify-center transition-colors ${padding} ${radius} w-full hover:bg-gray-200/50 active:bg-gray-300/50`}
+            className={`relative flex items-center justify-center transition-colors ${padding} ${radius} w-fit hover:bg-gray-200/50 active:bg-gray-300/50`}
             onMouseEnter={() => setShowToolTip(true)}
             onMouseLeave={() => setShowToolTip(false)}
         >
             {children}
 
             {showToolTip ? (
-                <span className="absolute top-[108%] left-[50%] -translate-x-[50%] z-10 bg-black rounded-[4px] py-1 px-2 min-w-max text-xs break-normal">
+                <span
+                    style={{
+                        right: right,
+                    }}
+                    className={`absolute top-[108%] text-white ${
+                        right ? "" : "left-[50%] -translate-x-[50%]"
+                    } z-10 bg-black rounded-[4px] py-1 px-2 min-w-max text-xs break-normal`}
+                >
                     {label}
                 </span>
             ) : null}
