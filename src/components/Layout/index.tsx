@@ -20,7 +20,7 @@ const Layout: React.FunctionComponent = () => {
 
             {isSidePanelOpen && (
                 <div
-                    className={`flex flex-col items-center gap-4 w-[50px] mt-4 p-1`}
+                    className={`flex flex-col items-center gap-4 w-[50px] mt-4 p-1 bg-[#F5F7F9]`}
                 >
                     <Iconbutton
                         label={"Calendar"}

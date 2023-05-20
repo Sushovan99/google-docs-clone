@@ -1,38 +1,32 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 interface Props {
-    text: string;
+    fontSize: string;
     label: string;
-    changeName: (input: string) => void;
+    changeFontSize: (input: string) => void;
 }
 
-const FileNameInput: React.FunctionComponent<Props> = ({
-    text,
+const NumberInput: React.FunctionComponent<Props> = ({
+    fontSize,
     label,
-    changeName,
+    changeFontSize,
 }) => {
     const [showToolTip, setShowToolTip] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
 
     const handleFileNameChange = (e: React.ChangeEvent) => {
-        changeName((e.target as HTMLInputElement).value);
-    };
-    const handleOnBlur = () => {
-        if (text.length === 0) {
-            changeName("Untitled document");
-        }
-        document.title = `${text ? text : "Untitled document"} - Google Docs`;
+        changeFontSize((e.target as HTMLInputElement).value);
     };
 
     useEffect(() => {
         if (document.activeElement === inputRef.current) {
             setShowToolTip(false);
         }
-    }, [text]);
+    }, [fontSize]);
 
     return (
         <div
-            className="text-lg text-gray-600 relative rounded-md w-fit shrink"
+            className="text-lg text-gray-600 relative rounded-md w-[28px] shrink flex items-center justify-center"
             onMouseEnter={() => setShowToolTip(true)}
             onMouseLeave={() => setShowToolTip(false)}
             onClick={() => inputRef.current?.select()}
@@ -40,14 +34,13 @@ const FileNameInput: React.FunctionComponent<Props> = ({
             <input
                 ref={inputRef}
                 type="text"
-                value={text}
+                value={fontSize}
                 style={{
-                    width: `calc(${text.length * 10}px + 20px)`,
+                    width: "20px",
                 }}
                 onChange={handleFileNameChange}
-                onBlur={handleOnBlur}
                 autoFocus
-                className="py-[1px] px-[8px] bg-transparent border-0 text-gray-600 min-w-[1px] h-full rounded-sm outline-none outline-offset-0 hover:outline-gray-500 hover:outline-1 focus-visible:outline-2 focus-visible:outline-blue-500"
+                className="border-0 bg-transparent text-sm text-gray-600 w-fit h-full rounded-sm outline-none outline-offset-0 hover:outline-gray-500 hover:outline-1 focus-visible:outline-2 focus-visible:outline-blue-500"
             />
 
             {showToolTip ? (
@@ -59,4 +52,4 @@ const FileNameInput: React.FunctionComponent<Props> = ({
     );
 };
 
-export default FileNameInput;
+export default NumberInput;

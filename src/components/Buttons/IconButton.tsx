@@ -6,6 +6,9 @@ interface Props {
     radius: string;
     padding?: string;
     right?: string;
+    bgHover?: string;
+    bgActive?: string;
+    handler?: () => void;
 }
 
 const IconButtonWithDropdown: React.FunctionComponent<Props> = ({
@@ -14,14 +17,21 @@ const IconButtonWithDropdown: React.FunctionComponent<Props> = ({
     children,
     padding = "p-1",
     right = "",
+    bgActive = "active:bg-gray-400/50",
+    bgHover = "hover:bg-gray-300/50",
+    handler,
 }) => {
     const [showToolTip, setShowToolTip] = useState(false);
 
     return (
         <button
-            className={`relative flex items-center justify-center transition-colors ${padding} ${radius} w-fit hover:bg-gray-200/50 active:bg-gray-300/50`}
+            className={`relative flex items-center justify-center transition-colors ${padding} ${radius} w-fit ${bgHover} ${bgActive}`}
             onMouseEnter={() => setShowToolTip(true)}
             onMouseLeave={() => setShowToolTip(false)}
+            onClick={() => {
+                if (handler !== undefined) handler();
+                setShowToolTip(false);
+            }}
         >
             {children}
 

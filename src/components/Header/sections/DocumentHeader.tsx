@@ -33,21 +33,21 @@ const LeftSection: React.FunctionComponent = () => {
                     />
                     <div className="flex gap-1">
                         <IconButtonWithDropdown
-                            label={"star"}
+                            label={"Star"}
                             radius="rounded-full"
                         >
                             <StarIcon fill="var(--icon-color)" />
                         </IconButtonWithDropdown>
 
                         <IconButtonWithDropdown
-                            label={"star"}
+                            label={"Move"}
                             radius="rounded-full"
                         >
                             <DriveFileMoveIcon fill="var(--icon-color)" />
                         </IconButtonWithDropdown>
 
                         <IconButtonWithDropdown
-                            label={"star"}
+                            label={"See document status"}
                             radius="rounded-full"
                         >
                             <CloudDoneIcon fill="var(--icon-color)" />
@@ -134,7 +134,7 @@ const RightSection: React.FunctionComponent = () => {
 // Secondary component containing document formatting options
 const DocumentFormattingSection: React.FunctionComponent = () => {
     return (
-        <div className="flex justify-between items-center py-2 px-6 text-white bg-white">
+        <div className="flex justify-between items-center py-2 px-6 text-white bg-[#F5F7F9]">
             <LeftSection />
             <RightSection />
         </div>
