@@ -21,7 +21,7 @@ const LeftSection: React.FunctionComponent = () => {
     return (
         <div className="relative shrink flex items-center gap-5">
             <picture className="shrink-0">
-                <img src={gdocsLogo} alt="google-docs-logo" className="h-10" />
+                <img src={gdocsLogo} alt="google-docs-logo" className="h-9" />
             </picture>
 
             <div className="flex flex-col items-start">
@@ -55,7 +55,7 @@ const LeftSection: React.FunctionComponent = () => {
                     </div>
                 </div>
 
-                <div className="flex gap-1 mt-1">
+                <div className="flex mt-1">
                     <TextButton text="File" />
                     <TextButton text="Edit" />
                     <TextButton text="View" />
@@ -118,12 +118,13 @@ const RightSection: React.FunctionComponent = () => {
                     </div>
                 </IconButtonWithDropdown>
 
-                <PillIconButton
-                    text="Share"
-                    startIcon={true}
-                    label="Private to only me"
-                >
-                    <Private fill="black" height="18" width="18" />
+                <PillIconButton label="Private to only me">
+                    <div className="flex items-center gap-3">
+                        <Private fill="black" height="18" width="18" />
+                        <span className="font-[500] tracking-wide text-black/70">
+                            Share
+                        </span>
+                    </div>
                 </PillIconButton>
             </div>
             <button className="rounded-full bg-teal-600 h-10 w-10">SB</button>
