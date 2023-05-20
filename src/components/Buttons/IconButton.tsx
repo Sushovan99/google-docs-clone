@@ -6,8 +6,10 @@ interface Props {
     radius: string;
     padding?: string;
     right?: string;
+    left?: string;
     bgHover?: string;
     bgActive?: string;
+    addClass?: string;
     handler?: () => void;
 }
 
@@ -17,15 +19,17 @@ const IconButtonWithDropdown: React.FunctionComponent<Props> = ({
     children,
     padding = "p-1",
     right = "",
+    left = "",
     bgActive = "active:bg-gray-400/50",
     bgHover = "hover:bg-gray-300/50",
+    addClass = "",
     handler,
 }) => {
     const [showToolTip, setShowToolTip] = useState(false);
 
     return (
         <button
-            className={`relative flex items-center justify-center transition-colors ${padding} ${radius} w-fit ${bgHover} ${bgActive}`}
+            className={`relative flex items-center justify-center transition-all ${padding} ${radius} w-fit ${bgHover} ${bgActive} ${addClass}`}
             onMouseEnter={() => setShowToolTip(true)}
             onMouseLeave={() => setShowToolTip(false)}
             onClick={() => {
@@ -39,9 +43,10 @@ const IconButtonWithDropdown: React.FunctionComponent<Props> = ({
                 <span
                     style={{
                         right: right,
+                        left: left,
                     }}
                     className={`absolute top-[108%] text-white ${
-                        right ? "" : "left-[50%] -translate-x-[50%]"
+                        right || left ? "" : "left-[50%] -translate-x-[50%]"
                     } z-10 bg-black rounded-[4px] py-1 px-2 min-w-max text-xs break-normal`}
                 >
                     {label}

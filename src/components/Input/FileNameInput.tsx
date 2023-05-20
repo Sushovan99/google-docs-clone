@@ -46,7 +46,6 @@ const FileNameInput: React.FunctionComponent<Props> = ({
                 }}
                 onChange={handleFileNameChange}
                 onBlur={handleOnBlur}
-                autoFocus
                 className="py-[1px] px-[8px] bg-transparent border-0 text-gray-600 min-w-[1px] h-full rounded-sm outline-none outline-offset-0 hover:outline-gray-500 hover:outline-1 focus-visible:outline-2 focus-visible:outline-blue-500"
             />
 

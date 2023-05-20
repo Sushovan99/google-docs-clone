@@ -29,8 +29,11 @@ import {
     ArrowDownIcon,
     ArrowUpIcon,
     EditIcon,
+    CheckList,
+    BoldBulletedList,
 } from "@/components/Icons";
 import PillIconButton from "../Buttons/PillIconButton";
+import DocumentsOutline from "../DocumentOutline";
 
 interface SeparatorProps {
     margin?: string;
@@ -46,10 +49,11 @@ const VerticalSeparator: React.FunctionComponent<SeparatorProps> = ({
 
 const Toolbar: React.FunctionComponent = () => {
     const [fontSize, setFontSize] = useState<string>("12");
+    const [showDocumentsOutline, setShowDocumentsOutline] = useState(false);
 
     return (
         <div
-            className="flex items-center justify-between bg-[#EDF2FA] ml-4 rounded-3xl px-3 py-1"
+            className="relative flex items-center justify-between bg-[#EDF2FA] ml-4 rounded-3xl px-3 py-1"
             style={{
                 width: "calc(100vw - 85px)",
             }}
@@ -278,6 +282,17 @@ const Toolbar: React.FunctionComponent = () => {
                     </IconButton>
 
                     <IconButton
+                        label={"Line & paragraph spacing"}
+                        radius={"rounded-md"}
+                    >
+                        <CheckList
+                            fill="var(--icon-color)"
+                            height="20"
+                            width="20"
+                        />
+                    </IconButton>
+
+                    <IconButton
                         label={"Bulleted list"}
                         radius={"rounded-md"}
                         padding="px-1 py-[5px] pr-4"
@@ -376,6 +391,13 @@ const Toolbar: React.FunctionComponent = () => {
                         <ArrowUpIcon fill="black" />
                     </IconButton>
                 </div>
+            </div>
+
+            <div className="absolute top-[115%] left-0 w-full">
+                <DocumentsOutline
+                    showOutline={showDocumentsOutline}
+                    setShowOutline={setShowDocumentsOutline}
+                />
             </div>
         </div>
     );

@@ -39,8 +39,7 @@ const NumberInput: React.FunctionComponent<Props> = ({
                     width: "20px",
                 }}
                 onChange={handleFileNameChange}
-                autoFocus
-                className="border-0 bg-transparent text-sm text-gray-600 w-fit h-full rounded-sm outline-none outline-offset-0 hover:outline-gray-500 hover:outline-1 focus-visible:outline-2 focus-visible:outline-blue-500"
+                className="border-0 bg-transparent outline outline-1 pl-[1px] text-sm text-gray-600 w-fit h-full rounded-sm outline-offset-0 hover:outline-gray-500 hover:outline-1 focus-visible:outline-2 focus-visible:outline-blue-500"
             />
 
             {showToolTip ? (
