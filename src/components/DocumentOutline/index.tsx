@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import IconButton from "../Buttons/IconButton";
 import { BoldBulletedList, ArrowBack, AddIcon } from "../Icons";
-import { useClickOutside } from "@/hooks/useClickOutside";
+import { useClickOutside } from "@/hooks/customHooks/useClickOutside";
 
 interface Props {
     showOutline: boolean;
