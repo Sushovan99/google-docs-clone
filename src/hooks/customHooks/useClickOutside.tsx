@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 
+// Custom hook to handle click outside events
 export const useClickOutside = (
     ref: React.RefObject<HTMLElement>,
     handler: VoidFunction

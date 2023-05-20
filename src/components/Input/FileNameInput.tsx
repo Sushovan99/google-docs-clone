@@ -6,6 +6,7 @@ interface Props {
     changeName: (input: string) => void;
 }
 
+// Component for giving & editing the document name
 const FileNameInput: React.FunctionComponent<Props> = ({
     text,
     label,

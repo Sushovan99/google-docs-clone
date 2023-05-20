@@ -7,6 +7,7 @@ import taskIcon from "@/assets/png/tasks.png";
 import contactsIcon from "@/assets/png/contacts.png";
 import addIcon from "@/assets/png/gm_add.png";
 
+// Component containing all the side panel buttons like Google-calender, keep etc.
 const SidePanel: React.FunctionComponent = () => {
     return (
         <div

@@ -15,6 +15,7 @@ import {
 } from "@/components/Icons";
 import TextButton from "@/components/Buttons/TextButton";
 
+// Left section of Document header component consisting of File,Edit,Format etc.. options
 const LeftSection: React.FunctionComponent = () => {
     const [fileName, setFileName] = useState<string>("Untitled document");
 
@@ -70,7 +71,9 @@ const LeftSection: React.FunctionComponent = () => {
     );
 };
 
+// Right section of Document header component containg Share btn, Account info btn etc..
 const RightSection: React.FunctionComponent = () => {
+    const [showToolTip, setShowToolTip] = useState(false);
     return (
         <div className="shrink-0 flex items-center gap-4">
             <div className="flex items-center gap-2">
@@ -127,12 +130,33 @@ const RightSection: React.FunctionComponent = () => {
                     </div>
                 </PillIconButton>
             </div>
-            <button className="rounded-full bg-teal-600 h-10 w-10">SB</button>
+
+            <div
+                className="relative"
+                onMouseEnter={() => setShowToolTip(true)}
+                onMouseLeave={() => setShowToolTip(false)}
+            >
+                <button className="rounded-full bg-teal-600 h-10 w-10">
+                    SB
+                </button>
+
+                {showToolTip && (
+                    <div
+                        className={`absolute top-[108%] right-0 text-white flex flex-col bg-gray-800/80 rounded-md z-20 text-xs tracking-wider w-auto p-2`}
+                    >
+                        <span>Google Account</span>
+                        <span className="text-gray-300">Sushovan Biswas</span>
+                        <span className="text-gray-300">
+                            biswassushovan99@gmail.com
+                        </span>
+                    </div>
+                )}
+            </div>
         </div>
     );
 };
 
-// Secondary component containing document formatting options
+// Secondary component containing secondary formatting options
 const DocumentFormattingSection: React.FunctionComponent = () => {
     return (
         <div className="flex justify-between items-center py-2 px-6 text-white bg-[#F5F7F9]">

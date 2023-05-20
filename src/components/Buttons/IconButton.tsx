@@ -13,7 +13,8 @@ interface Props {
     handler?: () => void;
 }
 
-const IconButtonWithDropdown: React.FunctionComponent<Props> = ({
+// Iconbutton component with tooltip
+const IconButton: React.FunctionComponent<Props> = ({
     label,
     radius,
     children,
@@ -39,6 +40,7 @@ const IconButtonWithDropdown: React.FunctionComponent<Props> = ({
         >
             {children}
 
+            {/* Rendering tooltip on hover */}
             {showToolTip ? (
                 <span
                     style={{
@@ -56,4 +58,4 @@ const IconButtonWithDropdown: React.FunctionComponent<Props> = ({
     );
 };
 
-export default IconButtonWithDropdown;
+export default IconButton;

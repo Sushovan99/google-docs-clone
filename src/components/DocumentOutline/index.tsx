@@ -8,6 +8,7 @@ interface Props {
     setShowOutline: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+// Component for showing document outline & summary on the top left side
 const DocumentsOutline: React.FunctionComponent<Props> = ({
     showOutline,
     setShowOutline,

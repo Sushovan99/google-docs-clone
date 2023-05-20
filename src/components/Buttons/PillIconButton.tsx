@@ -9,6 +9,7 @@ interface Props {
     activeBg?: string;
 }
 
+// Pill button component with tooltip
 const PillIconButton: React.FunctionComponent<Props> = ({
     children,
     label,
@@ -26,6 +27,7 @@ const PillIconButton: React.FunctionComponent<Props> = ({
         >
             {children}
 
+            {/* Rendering tooltip on hover */}
             {showToolTip ? (
                 <span className="absolute top-[108%] left-[50%] -translate-x-[50%] z-10 bg-black text-white rounded-[4px] py-1 px-2 min-w-max text-xs break-normal">
                     {label}

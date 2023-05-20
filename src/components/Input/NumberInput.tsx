@@ -6,6 +6,7 @@ interface Props {
     changeFontSize: (input: string) => void;
 }
 
+// Component used to take font size input
 const NumberInput: React.FunctionComponent<Props> = ({
     fontSize,
     label,

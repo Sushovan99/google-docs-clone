@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import { KeyBoardArrowLeft } from "./components/Icons";
 import Document from "./components/Document";
 
+// Using context to share the state of side-bar to Side panel component. (using context to nested props)
 export const SidebarContext = createContext(false);
 
 const App: React.FunctionComponent = () => {
@@ -10,16 +11,16 @@ const App: React.FunctionComponent = () => {
     const [showToolTip, setShowToolTip] = useState(false);
 
     return (
-        <div className="relative">
+        <div className="relative mb-3">
             {/* Main component related to doc formatting & editing */}
             <SidebarContext.Provider value={isSidePanelOpen}>
                 <Header />
             </SidebarContext.Provider>
 
-            {/* <Layout /> */}
-
+            {/* Component for rendering the document or page */}
             <Document />
 
+            {/* Button for toggling the side-panel */}
             <button
                 className={`fixed ${
                     isSidePanelOpen ? "right-1" : "-right-3 hover:right-0"
@@ -41,13 +42,16 @@ const App: React.FunctionComponent = () => {
                 }}
             >
                 <div className="relative">
-                    <span
-                        className={`${
-                            isSidePanelOpen ? "rotate-180" : "rotate-0"
-                        } transition-transform duration-300`}
-                    >
-                        <KeyBoardArrowLeft fill="var(--icon-color)" />
+                    <span>
+                        <KeyBoardArrowLeft
+                            fill="var(--icon-color)"
+                            addClass={`${
+                                isSidePanelOpen ? "rotate-180" : "rotate-0"
+                            } transition-transform duration-300`}
+                        />
                     </span>
+
+                    {/* Conditionally showing tooltips */}
                     {showToolTip ? (
                         <span
                             className={`absolute top-[108%] right-0 text-white z-10 bg-black rounded-[4px] py-1 px-2 min-w-max text-xs break-normal`}

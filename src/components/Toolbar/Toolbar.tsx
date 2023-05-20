@@ -42,6 +42,7 @@ interface SeparatorProps {
     margin?: string;
 }
 
+// Separtor component
 const VerticalSeparator: React.FunctionComponent<SeparatorProps> = ({
     margin = "",
 }) => {
@@ -50,6 +51,7 @@ const VerticalSeparator: React.FunctionComponent<SeparatorProps> = ({
     );
 };
 
+// Components containing all the primary text formatting options like changing font-size, weight etc..
 const Toolbar: React.FunctionComponent = () => {
     const [fontSize, setFontSize] = useState<string>("12");
     const [showDocumentsOutline, setShowDocumentsOutline] = useState(false);
@@ -59,10 +61,11 @@ const Toolbar: React.FunctionComponent = () => {
         <div className="flex items-start relative bg-[#F5F7F9]">
             <div
                 style={{
-                    width: isSidePanelOpen ? "calc(100vw - 72px)" : "100%",
+                    width: isSidePanelOpen ? "calc(100vw - 85px)" : "100%",
                 }}
                 className="relative flex items-center justify-between bg-[#EDF2FA] mx-4 rounded-3xl px-3 py-1 w-full"
             >
+                {/* Left side toolbar group */}
                 <div className="flex items-center">
                     <IconButton
                         radius="rounded-md"
@@ -385,6 +388,7 @@ const Toolbar: React.FunctionComponent = () => {
                     </div>
                 </div>
 
+                {/* Right side toolbar group */}
                 <div className="flex items-center bg-[#F5F7F9]`">
                     <div className="mr-2">
                         <PillIconButton
@@ -412,6 +416,7 @@ const Toolbar: React.FunctionComponent = () => {
                             label="Hide the menus"
                             radius="rounded-md"
                             padding="px-2 py-2"
+                            right="0"
                         >
                             <ArrowUpIcon fill="black" />
                         </IconButton>
@@ -426,6 +431,7 @@ const Toolbar: React.FunctionComponent = () => {
                 </div>
             </div>
 
+            {/* Conditionally showing side-panel using the bottom-right floating button */}
             {isSidePanelOpen ? <SidePanel /> : null}
         </div>
     );

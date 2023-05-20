@@ -1,11 +1,12 @@
 import React from "react";
 
-// This file contains all the Custom icons
+// This file contains all the Custom icons used in this project
 
 interface Props {
     fill: string;
     height?: string;
     width?: string;
+    addClass?: string;
 }
 
 export const StarIcon: React.FunctionComponent<Props> = ({
@@ -156,6 +157,7 @@ export const KeyBoardArrowLeft: React.FunctionComponent<Props> = ({
     fill,
     height = "18",
     width = "18",
+    addClass,
 }) => {
     return (
         <svg
@@ -164,6 +166,7 @@ export const KeyBoardArrowLeft: React.FunctionComponent<Props> = ({
             viewBox="0 96 960 960"
             width={width}
             fill={fill}
+            className={addClass}
         >
             <path d="M561 816 320 575l241-241 43 43-198 198 198 198-43 43Z" />
         </svg>

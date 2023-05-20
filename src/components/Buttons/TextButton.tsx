@@ -11,6 +11,7 @@ interface Props {
     label?: string;
 }
 
+// Textbutton component with tooltip.
 const TextButton: React.FunctionComponent<Props> = ({
     text,
     menuData,
@@ -35,21 +36,28 @@ const TextButton: React.FunctionComponent<Props> = ({
                 onMouseEnter={() => setShowToolTip(true)}
                 onMouseLeave={() => setShowToolTip(false)}
             >
+                {/* For showing start-icon */}
                 {startIcon && <span>{children}</span>}
+
+                {/* Conditionally showing text */}
                 <span className="inline-block max-w-[80px] text-ellipsis whitespace-nowrap overflow-hidden">
                     {text}
                 </span>
+
+                {/* Conditionally showing end-icon */}
                 {endIcon && (
                     <span className="-translate-y-[1px]">{children}</span>
                 )}
             </button>
 
+            {/* Conditionally showing tooltip */}
             {label && showToolTip ? (
                 <span className="absolute top-[108%] left-[50%] -translate-x-[50%] z-10 bg-black text-white rounded-[4px] py-1 px-2 min-w-max text-xs break-normal">
                     {label}
                 </span>
             ) : null}
 
+            {/* Code for showing dropdown (not-implemented) */}
             {isOpen ? (
                 <ul className="absolute top-[100%] left-0 py-1 max-w-xs">
                     {menuData?.map((v, i) => (
