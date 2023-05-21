@@ -1,9 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import IconButton from "../Buttons/IconButton";
 import TextButton from "../Buttons/TextButton";
 import NumberInput from "../Input/NumberInput";
 import SidePanel from "../Sidepanel";
-import { SidebarContext } from "@/App";
+import { useAppSelector } from "@/store/hooks";
 
 import {
     UndoIcon,
@@ -42,6 +42,10 @@ interface SeparatorProps {
     margin?: string;
 }
 
+interface ToolbarProps {
+    setIsMenuHidden: Dispatch<SetStateAction<boolean>>;
+}
+
 // Separtor component
 const VerticalSeparator: React.FunctionComponent<SeparatorProps> = ({
     margin = "",
@@ -52,10 +56,14 @@ const VerticalSeparator: React.FunctionComponent<SeparatorProps> = ({
 };
 
 // Components containing all the primary text formatting options like changing font-size, weight etc..
-const Toolbar: React.FunctionComponent = () => {
+const Toolbar: React.FunctionComponent<ToolbarProps> = ({
+    setIsMenuHidden,
+}) => {
     const [fontSize, setFontSize] = useState<string>("12");
     const [showDocumentsOutline, setShowDocumentsOutline] = useState(false);
-    const isSidePanelOpen = useContext(SidebarContext);
+    const isSidePanelOpen = useAppSelector(
+        (state) => state.sidpepanel.isSidePanelOpen
+    );
 
     return (
         <div className="flex items-start relative bg-[#F5F7F9]">
@@ -417,6 +425,7 @@ const Toolbar: React.FunctionComponent = () => {
                             radius="rounded-md"
                             padding="px-2 py-2"
                             right="0"
+                            handler={() => setIsMenuHidden((prev) => !prev)}
                         >
                             <ArrowUpIcon fill="black" />
                         </IconButton>

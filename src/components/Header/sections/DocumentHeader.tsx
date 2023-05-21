@@ -25,7 +25,7 @@ const LeftSection: React.FunctionComponent = () => {
                 <img src={gdocsLogo} alt="google-docs-logo" className="h-9" />
             </picture>
 
-            <div className="flex flex-col items-start">
+            <div className="flex flex-col items-start shrink">
                 <div className="flex items-center gap-1">
                     <FileNameInput
                         label="Rename"
@@ -159,7 +159,7 @@ const RightSection: React.FunctionComponent = () => {
 // Secondary component containing secondary formatting options
 const DocumentFormattingSection: React.FunctionComponent = () => {
     return (
-        <div className="flex justify-between items-center py-2 px-6 text-white bg-[#F5F7F9]">
+        <div className="flex justify-between items-start py-2 px-6 text-white bg-[#F5F7F9]">
             <LeftSection />
             <RightSection />
         </div>

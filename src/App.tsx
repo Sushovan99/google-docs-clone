@@ -1,21 +1,25 @@
-import React, { useState, createContext } from "react";
+import React, { useState } from "react";
+import { useAppSelector, useAppDispatch } from "@/store/hooks";
+import { toggleSidePanel } from "@/store/UI/sidePanelSlice";
 import Header from "@/components/Header";
 import { KeyBoardArrowLeft } from "./components/Icons";
 import Document from "./components/Document";
 
-// Using context to share the state of side-bar to Side panel component. (using context to nested props)
-export const SidebarContext = createContext(false);
-
 const App: React.FunctionComponent = () => {
-    const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
+    const dispatch = useAppDispatch();
     const [showToolTip, setShowToolTip] = useState(false);
+    const isSidePanelOpen = useAppSelector(
+        (state) => state.sidpepanel.isSidePanelOpen
+    );
+    const setIsSidePanelOpen = () => {
+        dispatch(toggleSidePanel());
+    };
 
     return (
         <div className="relative mb-3">
             {/* Main component related to doc formatting & editing */}
-            <SidebarContext.Provider value={isSidePanelOpen}>
-                <Header />
-            </SidebarContext.Provider>
+
+            <Header />
 
             {/* Component for rendering the document or page */}
             <Document />
@@ -26,7 +30,7 @@ const App: React.FunctionComponent = () => {
                     isSidePanelOpen ? "right-1" : "-right-3 hover:right-0"
                 } bottom-5 bg-gray-200/80 flex items-center justify-center h-10 w-10`}
                 onClick={() => {
-                    setIsSidePanelOpen((prev) => !prev);
+                    setIsSidePanelOpen();
                     setShowToolTip(false);
                 }}
                 onMouseEnter={() => setShowToolTip(true)}
