@@ -2,6 +2,7 @@
 
 This project is for showcasing the frontend skills. It's not a fully functional Google docs clone. All the assets such as SVG icons are downloaded from [Google  Fonts](https://fonts.google.com/icons/)
 
+![Demo](https://github.com/Sushovan99/google-docs-clone/blob/main/docs-clone-demo.gif)
 
 ## Setting up the project
 
