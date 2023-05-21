@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import SidePanelReducer from "./UI/sidePanelSlice";
+import toolbarReducer from "./UI/toolbarSlice";
 
 export const store = configureStore({
     reducer: {
         sidpepanel: SidePanelReducer,
+        toolbar: toolbarReducer,
     },
 });
 
