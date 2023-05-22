@@ -1,10 +1,8 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
 import IconButton from "../Buttons/IconButton";
 import TextButton from "../Buttons/TextButton";
-import NumberInput from "../Input/NumberInput";
 import SidePanel from "../Sidepanel";
 import { useAppSelector } from "@/store/hooks";
-
 import {
     UndoIcon,
     RedoIcon,
@@ -12,18 +10,10 @@ import {
     PaintDocIcon,
     SpellCheckIcon,
     ArrowDropDown,
-    AddIcon,
-    RemoveIcon,
-    FormatBoldIcon,
-    FormatItalics,
-    FormatUnderlined,
-    FormatColorText,
     FormatInkHighLigher,
     InsertLinkIcon,
     AddCommentIcon,
     ImageIcon,
-    AlignLeft,
-    LineSpacingIcon,
     BulletedListIcon,
     NumberedList,
     IncreaseIndent,
@@ -37,6 +27,13 @@ import {
 } from "@/components/Icons";
 import PillIconButton from "../Buttons/PillIconButton";
 import DocumentsOutline from "../DocumentOutline";
+import AlignMent from "./Buttons/AlignmentBtn";
+import ColorpickerBtn from "./Buttons/ColorpickerBtn";
+import ChangeFontSize from "./Buttons/ChangeFontSize";
+import ChangeFontWeightBtn from "./Buttons/ChangeFontWeightBtn";
+import ChangeStyleItalic from "./Buttons/ChangeStyleItalic";
+import ToggleUnderlineBtn from "./Buttons/ToggleUnderlineBtn";
+import ChangeLineHeight from "./Buttons/ChangeLineHeight";
 
 interface SeparatorProps {
     margin?: string;
@@ -59,7 +56,6 @@ const VerticalSeparator: React.FunctionComponent<SeparatorProps> = ({
 const Toolbar: React.FunctionComponent<ToolbarProps> = ({
     setIsMenuHidden,
 }) => {
-    const [fontSize, setFontSize] = useState<string>("12");
     const [showDocumentsOutline, setShowDocumentsOutline] = useState(false);
     const isSidePanelOpen = useAppSelector(
         (state) => state.sidpepanel.isSidePanelOpen
@@ -113,7 +109,7 @@ const Toolbar: React.FunctionComponent<ToolbarProps> = ({
 
                     <IconButton
                         radius="rounded-md"
-                        label={"Paint format"}
+                        label={"Spelling and grammar check"}
                         padding="px-[6px] py-[7px]"
                     >
                         <SpellCheckIcon
@@ -168,70 +164,18 @@ const Toolbar: React.FunctionComponent<ToolbarProps> = ({
 
                     <VerticalSeparator margin="mx-1" />
 
-                    <div className="flex items-center">
-                        <IconButton
-                            label={"Decrease font size"}
-                            radius={"rounded-md"}
-                            handler={() =>
-                                setFontSize((prev) => `${Number(prev) - 1}`)
-                            }
-                        >
-                            <RemoveIcon fill="var(--icon-color)" />
-                        </IconButton>
-
-                        <div>
-                            <NumberInput
-                                fontSize={fontSize}
-                                changeFontSize={setFontSize}
-                                label="Font size"
-                            />
-                        </div>
-
-                        <IconButton
-                            label={"Increase font size"}
-                            radius={"rounded-md"}
-                            handler={() =>
-                                setFontSize((prev) => `${Number(prev) + 1}`)
-                            }
-                        >
-                            <AddIcon fill="var(--icon-color)" />
-                        </IconButton>
-                    </div>
+                    <ChangeFontSize />
 
                     <VerticalSeparator margin="mx-1" />
 
                     <div className="flex items-center gap-1">
-                        <IconButton label={"Bold"} radius={"rounded-md"}>
-                            <FormatBoldIcon
-                                fill="var(--icon-color)"
-                                height="20"
-                                width="20"
-                            />
-                        </IconButton>
+                        <ChangeFontWeightBtn />
 
-                        <IconButton label={"Italic"} radius={"rounded-md"}>
-                            <FormatItalics
-                                fill="var(--icon-color)"
-                                height="20"
-                                width="20"
-                            />
-                        </IconButton>
+                        <ChangeStyleItalic />
 
-                        <IconButton label={"Underline"} radius={"rounded-md"}>
-                            <FormatUnderlined
-                                fill="var(--icon-color)"
-                                height="20"
-                                width="20"
-                            />
-                        </IconButton>
+                        <ToggleUnderlineBtn />
 
-                        <IconButton label={"Text color"} radius={"rounded-md"}>
-                            <FormatColorText
-                                fill="var(--icon-color)"
-                                height="20"
-                                width="20"
-                            />
-                        </IconButton>
+                        <ColorpickerBtn />
 
                         <IconButton
                             label={"Highligh color"}
@@ -276,37 +220,9 @@ const Toolbar: React.FunctionComponent<ToolbarProps> = ({
                     <VerticalSeparator margin="mx-1" />
 
                     <div className="flex gap-2 items-center">
-                        <IconButton
-                            label={"Align"}
-                            radius={"rounded-md"}
-                            padding="px-1 py-[5px] pr-4"
-                        >
-                            <div className="relative">
-                                <AlignLeft
-                                    fill="black"
-                                    height="18"
-                                    width="18"
-                                />
-                                <span className="absolute top-0 -right-4">
-                                    <ArrowDropDown
-                                        fill="black"
-                                        height="16"
-                                        width="16"
-                                    />
-                                </span>
-                            </div>
-                        </IconButton>
+                        <AlignMent />
 
-                        <IconButton
-                            label={"Line & paragraph spacing"}
-                            radius={"rounded-md"}
-                        >
-                            <LineSpacingIcon
-                                fill="var(--icon-color)"
-                                height="20"
-                                width="20"
-                            />
-                        </IconButton>
+                        <ChangeLineHeight />
 
                         <IconButton
                             label={"Line & paragraph spacing"}

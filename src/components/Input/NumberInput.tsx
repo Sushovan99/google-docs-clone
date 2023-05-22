@@ -1,22 +1,20 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useAppDispatch } from "@/store/hooks";
+import { setFontSize } from "@/store/UI/toolbarSlice";
 
 interface Props {
     fontSize: string;
     label: string;
-    changeFontSize: (input: string) => void;
 }
 
 // Component used to take font size input
-const NumberInput: React.FunctionComponent<Props> = ({
-    fontSize,
-    label,
-    changeFontSize,
-}) => {
+const NumberInput: React.FunctionComponent<Props> = ({ fontSize, label }) => {
+    const dispatch = useAppDispatch();
     const [showToolTip, setShowToolTip] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
 
     const handleFileNameChange = (e: React.ChangeEvent) => {
-        changeFontSize((e.target as HTMLInputElement).value);
+        dispatch(setFontSize((e.target as HTMLInputElement).value));
     };
 
     useEffect(() => {

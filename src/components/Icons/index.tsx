@@ -461,6 +461,60 @@ export const AlignLeft: React.FunctionComponent<Props> = ({
     );
 };
 
+export const AlignRight: React.FunctionComponent<Props> = ({
+    fill,
+    height = "18",
+    width = "18",
+}) => {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height={height}
+            viewBox="0 96 960 960"
+            width={width}
+            fill={fill}
+        >
+            <path d="M120 936v-60h720v60H120Zm249-165v-60h471v60H369ZM120 606v-60h720v60H120Zm249-165v-60h471v60H369ZM120 276v-60h720v60H120Z" />
+        </svg>
+    );
+};
+
+export const AlighCenter: React.FunctionComponent<Props> = ({
+    fill,
+    height = "18",
+    width = "18",
+}) => {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height={height}
+            viewBox="0 96 960 960"
+            width={width}
+            fill={fill}
+        >
+            <path d="M120 936v-60h720v60H120Zm164-165v-60h393v60H284ZM120 606v-60h720v60H120Zm164-165v-60h393v60H284ZM120 276v-60h720v60H120Z" />
+        </svg>
+    );
+};
+
+export const AlignJustify: React.FunctionComponent<Props> = ({
+    fill,
+    height = "18",
+    width = "18",
+}) => {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height={height}
+            viewBox="0 96 960 960"
+            width={width}
+            fill={fill}
+        >
+            <path d="M120 936v-60h720v60H120Zm0-165v-60h720v60H120Zm0-165v-60h720v60H120Zm0-165v-60h720v60H120Zm0-165v-60h720v60H120Z" />
+        </svg>
+    );
+};
+
 export const LineSpacingIcon: React.FunctionComponent<Props> = ({
     fill,
     height = "18",
@@ -673,6 +727,24 @@ export const ArrowBack: React.FunctionComponent<Props> = ({
             fill={fill}
         >
             <path d="M480 909 148 576l332-332 52 52-244 244h525v73H288l244 244-52 52Z" />
+        </svg>
+    );
+};
+
+export const DoneIcon: React.FunctionComponent<Props> = ({
+    fill,
+    height = "18",
+    width = "18",
+}) => {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height={height}
+            viewBox="0 96 960 960"
+            width={width}
+            fill={fill}
+        >
+            <path d="M378 810 154 586l43-43 181 181 384-384 43 43-427 427Z" />
         </svg>
     );
 };

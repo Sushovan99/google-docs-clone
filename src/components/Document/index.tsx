@@ -1,11 +1,27 @@
-import React, { useRef, useState } from "react";
-import useAutosizeTextArea from "@/hooks/customHooks/useAutoResizeTextArea";
+import React, { useRef } from "react";
+import { useAppSelector } from "@/store/hooks";
 
-// Text Area component, where we can type/add things that we want in our doc
+// Editable div component, where we can type things that we want in our doc
 const Document: React.FunctionComponent = () => {
-    const [value, setValue] = useState("");
-    const textAreaRef = useRef<HTMLTextAreaElement>(null);
-    useAutosizeTextArea(textAreaRef.current, value);
+    const {
+        isBold,
+        isItalic,
+        fontSize,
+        textAlign,
+        textColor,
+        isUnderLine,
+        lineHeight,
+    } = useAppSelector((state) => state.toolbar);
+    const textAreaRef = useRef<HTMLDivElement>(null);
+    const checkLineheight = (lineHeight: string) => {
+        if (lineHeight === "Single") {
+            return "1";
+        } else if (lineHeight === "Double") {
+            return "2";
+        } else {
+            return lineHeight;
+        }
+    };
 
     return (
         <main className="w-full h-full">
@@ -13,17 +29,21 @@ const Document: React.FunctionComponent = () => {
                 className="mx-auto bg-white border border-black/30 max-w-3xl h-auto mt-4 pb-8 rounded-sm"
                 onClick={() => textAreaRef.current?.focus()}
             >
-                <div className="max-w-lg mx-auto min-h-[100vh] mt-[100px]">
-                    <textarea
-                        ref={textAreaRef}
-                        rows={1}
-                        onChange={(e) => setValue(e.target.value)}
-                        name="doc-text"
-                        id="doc-text"
-                        className="hide-scrollbar w-full h-auto font-normal outline-none border-none focus-visible:outline-none resize-none"
-                        autoFocus
-                    ></textarea>
-                </div>
+                <div
+                    id="editable"
+                    className="max-w-lg mx-auto min-h-[100vh] mt-[100px] outline-none"
+                    contentEditable={true}
+                    style={{
+                        fontWeight: isBold ? "bold" : "normal",
+                        fontStyle: isItalic ? "italic" : "normal",
+                        fontSize: fontSize + "px",
+                        textAlign: textAlign,
+                        color: textColor,
+                        textDecoration: isUnderLine ? "underline" : "",
+                        lineHeight: checkLineheight(lineHeight),
+                    }}
+                    ref={textAreaRef}
+                ></div>
             </div>
         </main>
     );

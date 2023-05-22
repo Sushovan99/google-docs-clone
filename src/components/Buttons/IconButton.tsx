@@ -10,6 +10,8 @@ interface Props {
     bgHover?: string;
     bgActive?: string;
     addClass?: string;
+    activeState?: boolean;
+    activeBg?: string;
     handler?: () => void;
 }
 
@@ -24,13 +26,17 @@ const IconButton: React.FunctionComponent<Props> = ({
     bgActive = "active:bg-gray-400/50",
     bgHover = "hover:bg-gray-300/50",
     addClass = "",
+    activeState,
+    activeBg,
     handler,
 }) => {
     const [showToolTip, setShowToolTip] = useState(false);
 
     return (
         <button
-            className={`relative flex items-center justify-center transition-all ${padding} ${radius} w-fit ${bgHover} ${bgActive} ${addClass}`}
+            className={`relative flex items-center justify-center transition-all ${padding} ${radius} w-fit ${bgHover} ${bgActive} ${addClass} ${
+                activeState ? activeBg : ""
+            }`}
             onMouseEnter={() => setShowToolTip(true)}
             onMouseLeave={() => setShowToolTip(false)}
             onClick={() => {
