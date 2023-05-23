@@ -16,13 +16,15 @@ const App: React.FunctionComponent = () => {
     };
 
     return (
-        <div className="relative mb-3">
+        <div className="mb-3">
             {/* Main component related to doc formatting & editing */}
 
             <Header />
 
-            {/* Component for rendering the document or page */}
-            <Document />
+            <div className="overflow-x-scroll">
+                {/* Component for rendering the document or page */}
+                <Document />
+            </div>
 
             {/* Button for toggling the side-panel */}
             <button

@@ -9,6 +9,7 @@ interface Props {
     fontWeight?: string;
     padding?: string;
     label?: string;
+    handler?: () => void;
 }
 
 // Textbutton component with tooltip.
@@ -21,6 +22,7 @@ const TextButton: React.FunctionComponent<Props> = ({
     fontWeight = "font-normal",
     padding = "py-[2px] px-[9px]",
     label = "",
+    handler,
 }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [showToolTip, setShowToolTip] = useState(false);
@@ -32,6 +34,7 @@ const TextButton: React.FunctionComponent<Props> = ({
                 onClick={() => {
                     setIsOpen(true);
                     setShowToolTip(false);
+                    if (handler !== undefined) handler();
                 }}
                 onMouseEnter={() => setShowToolTip(true)}
                 onMouseLeave={() => setShowToolTip(false)}

@@ -1,10 +1,10 @@
 import React from "react";
-import { useAppSelector } from "@/store/hooks";
 
 interface Props {
     width?: string;
     options: string[];
     handlers: (val: string) => void;
+    state?: string;
     children?: React.ReactElement;
 }
 
@@ -14,9 +14,8 @@ const VerticalDropDown: React.FunctionComponent<Props> = ({
     options = ["Option 1"],
     handlers,
     children,
+    state,
 }) => {
-    const { lineHeight } = useAppSelector((state) => state.toolbar);
-
     return (
         <ul
             className={`absolute top-[100%] left-0 shadow-lg rounded-md bg-white z-30 flex flex-col px-[1px] py-1 ${width}`}
@@ -27,13 +26,16 @@ const VerticalDropDown: React.FunctionComponent<Props> = ({
                     onClick={() => handlers(value)}
                     className="flex items-center gap-2 px-3 py-1 rounded-sm font-base text-sm text-black hover:bg-gray-200/80"
                 >
-                    <span
-                        className={`${
-                            lineHeight === value ? "visible" : "invisible"
-                        }`}
-                    >
-                        {children}
-                    </span>
+                    {children !== null && (
+                        <span
+                            className={`${
+                                state === value ? "visible" : "invisible"
+                            }`}
+                        >
+                            {children}
+                        </span>
+                    )}
+
                     {value}
                 </li>
             ))}

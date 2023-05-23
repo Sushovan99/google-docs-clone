@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
 interface InitialState {
     fontSize: string;
     isBold: boolean;
@@ -8,6 +7,7 @@ interface InitialState {
     textColor: string;
     textAlign: CanvasTextAlign;
     lineHeight: string;
+    fontFamily: string;
 }
 
 const initialState: InitialState = {
@@ -18,6 +18,7 @@ const initialState: InitialState = {
     textColor: "black",
     textAlign: "left",
     lineHeight: "1",
+    fontFamily: "Arial",
 };
 
 const toolBarSlice = createSlice({
@@ -27,12 +28,15 @@ const toolBarSlice = createSlice({
         increaseFont(state) {
             state.fontSize = `${Number(state.fontSize) + 1}`;
         },
+
         decreaseFontSize(state) {
             state.fontSize = `${Number(state.fontSize) - 1}`;
         },
+
         setFontSize(state, action: PayloadAction<string>) {
             state.fontSize = action.payload;
         },
+
         toggleFontWeight(state) {
             state.isBold = !state.isBold;
         },
@@ -56,6 +60,10 @@ const toolBarSlice = createSlice({
         setLineHeight(state, action: PayloadAction<string>) {
             state.lineHeight = action.payload;
         },
+
+        setFontFamily(state, action: PayloadAction<string>) {
+            state.fontFamily = action.payload;
+        },
     },
 });
 
@@ -71,4 +79,5 @@ export const {
     setTextColor,
     toggleUnderline,
     setLineHeight,
+    setFontFamily,
 } = toolBarSlice.actions;

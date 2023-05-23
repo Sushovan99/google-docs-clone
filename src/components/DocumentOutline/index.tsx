@@ -43,7 +43,7 @@ const DocumentsOutline: React.FunctionComponent<Props> = ({
                 className={`transition-transform -translate-y-[44px] max-w-[250px] ${
                     showOutline
                         ? "translate-x-0"
-                        : "-translate-x-[300px] select-none pointer-events-none"
+                        : "-translate-x-[300px] select-none pointer-events-none -z-10"
                 }`}
             >
                 <div className="mb-4">

@@ -34,6 +34,7 @@ import ChangeFontWeightBtn from "./Buttons/ChangeFontWeightBtn";
 import ChangeStyleItalic from "./Buttons/ChangeStyleItalic";
 import ToggleUnderlineBtn from "./Buttons/ToggleUnderlineBtn";
 import ChangeLineHeight from "./Buttons/ChangeLineHeight";
+import FontFamilyBtn from "./Buttons/FontFamilyBtn";
 
 interface SeparatorProps {
     margin?: string;
@@ -153,14 +154,7 @@ const Toolbar: React.FunctionComponent<ToolbarProps> = ({
 
                     <VerticalSeparator margin="mx-1" />
 
-                    <TextButton
-                        text="Nunito"
-                        padding="py-[5px] px-[9px] pr-[2px]"
-                        label="Font"
-                        endIcon
-                    >
-                        <ArrowDropDown fill="var(--icon-color)" />
-                    </TextButton>
+                    <FontFamilyBtn />
 
                     <VerticalSeparator margin="mx-1" />
 
@@ -224,10 +218,7 @@ const Toolbar: React.FunctionComponent<ToolbarProps> = ({
 
                         <ChangeLineHeight />
 
-                        <IconButton
-                            label={"Line & paragraph spacing"}
-                            radius={"rounded-md"}
-                        >
+                        <IconButton label={"Checklist"} radius={"rounded-md"}>
                             <CheckList
                                 fill="var(--icon-color)"
                                 height="20"
@@ -348,7 +339,7 @@ const Toolbar: React.FunctionComponent<ToolbarProps> = ({
                     </div>
                 </div>
 
-                <div className="absolute top-[115%] left-0">
+                <div className={`absolute top-[115%] left-0`}>
                     <DocumentsOutline
                         showOutline={showDocumentsOutline}
                         setShowOutline={setShowDocumentsOutline}

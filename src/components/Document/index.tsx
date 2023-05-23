@@ -11,6 +11,7 @@ const Document: React.FunctionComponent = () => {
         textColor,
         isUnderLine,
         lineHeight,
+        fontFamily,
     } = useAppSelector((state) => state.toolbar);
     const textAreaRef = useRef<HTMLDivElement>(null);
     const checkLineheight = (lineHeight: string) => {
@@ -24,9 +25,9 @@ const Document: React.FunctionComponent = () => {
     };
 
     return (
-        <main className="w-full h-full">
+        <main className="w-full h-full px-16">
             <div
-                className="mx-auto bg-white border border-black/30 max-w-3xl h-auto mt-4 pb-8 rounded-sm"
+                className="mx-auto bg-white border border-black/30 max-w-4xl h-auto mt-4 pb-8 rounded-sm"
                 onClick={() => textAreaRef.current?.focus()}
             >
                 <div
@@ -34,6 +35,7 @@ const Document: React.FunctionComponent = () => {
                     className="max-w-lg mx-auto min-h-[100vh] mt-[100px] outline-none"
                     contentEditable={true}
                     style={{
+                        fontFamily: fontFamily,
                         fontWeight: isBold ? "bold" : "normal",
                         fontStyle: isItalic ? "italic" : "normal",
                         fontSize: fontSize + "px",
