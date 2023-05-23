@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+// Store containing all Toolbar states
 interface InitialState {
     fontSize: string;
     isBold: boolean;

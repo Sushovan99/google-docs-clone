@@ -16,6 +16,7 @@ const options = [
     "Cursive",
 ];
 
+// Component including Font family button with dropdown
 const FontFamilyBtn: React.FunctionComponent = () => {
     const dispatch = useAppDispatch();
     const containerRef = useRef<HTMLDivElement>(null);
